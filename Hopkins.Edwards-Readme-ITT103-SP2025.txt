@@ -1,0 +1,74 @@
+Authors: Joash Hopkins and Taeshaun Edwards
+Date Created:6/4/25
+Course: ITT103
+GitHub Public URL to Code:https://github.com/jhopkins-web/Hopkins_Edwards-Major-Project
+
+Purpose of the Program:
+This Python program simulates a text-based wholesale shopping system for Hopkins and Edwards Wholesale. It allows users to:
+
+1. View a product catalog with prices and stock levels
+
+2. Add items to a shopping cart
+
+3. Remove items from the cart
+
+4. View the current cart summary
+
+5. Proceed to checkout, including calculating:
+
+Subtotal
+
+Sales tax (10%)
+
+Discount (5% if total > 5000)
+
+Change returned
+
+Print a formatted receipt after purchase
+
+Start a new transaction or exit the system
+
+
+How to Run the Program:
+Requirements:
+
+Visual Studio Code installed on your computer.
+
+No external libraries are needed (standard library only).
+
+Steps to Run:
+
+Save the program in a .py file (e.g., H and E.py)
+
+Open the code in Visual Studio Code.
+
+Follow on-screen menu prompts to interact with the system.
+
+Required Modifications:
+To adapt or enhance this program for other use cases:
+
+Add More Products: Modify the products dictionary at the bottom of the script to add new items or adjust prices and stock levels.
+
+Product Input by Number: Currently, products are added/removed using names. You can modify the logic to display and accept item numbers instead for ease of use.
+
+Persistent Data Storage: The system resets every time it runs. You may add file handling or a database to persist sales history or inventory levels.
+
+GUI Integration: A graphical user interface could make the system more user-friendly for retail environments.
+
+
+
+Assumptions and Limitations:
+
+Stock Handling:
+
+Stock is automatically reduced upon adding items to the cart.
+
+If checkout is canceled, stock isn't restored unless the user manually removes items from the cart.
+
+No User Login or Multi-User Support:
+
+The program assumes a single cashier/operator.
+
+No record of customers or sales history is stored.
+
+Only one cart exists at a time. It resets after each successful checkout.

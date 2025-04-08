@@ -26,16 +26,21 @@ def add_to_cart():
     print("-"*60)
     product = input("Enter product name: ").title()
     if product in products:
-        quantity = int(input("Enter quantity: "))
-        if quantity <= products[product]['stock']:
-            if product in cart:
-                cart[product]['quantity'] += quantity
+        try:
+            quantity = int(input("Enter quantity: "))
+            if quantity <= 0:
+                print("Invalid quantity to add!")
+            elif quantity <= products[product]['stock']:
+                if product in cart:
+                    cart[product]['quantity'] += quantity
+                else:
+                    cart[product] = {'price': products[product]['price'], 'quantity': quantity}
+                products[product]['stock'] -= quantity
+                print(f"{quantity} {product}(s) added to cart.")
             else:
-                cart[product] = {'price': products[product]['price'], 'quantity': quantity}
-            products[product]['stock'] -= quantity
-            print(f"{quantity} {product}(s) added to cart.")
-        else:
-            print("Insufficient stock!")
+                print("Insufficient stock!")
+        except ValueError:
+            print("Please enter a valid number for the quantity.")
     else:
         print("Product not found!")
 
@@ -44,14 +49,20 @@ def remove_from_cart():
     print("-"*60)
     product = input("Enter product name to remove: ").title()
     if product in cart:
-        quantity = int(input("Enter quantity to remove: "))
-        if quantity >= cart[product]['quantity']:
-            products[product]['stock'] += cart[product]['quantity']
-            del cart[product]
-        else:
-            cart[product]['quantity'] -= quantity
-            products[product]['stock'] += quantity
-        print(f"Removed {quantity} {product}(s) from cart.")
+        try:
+            quantity = int(input("Enter quantity to remove: "))
+            if quantity <= 0:
+                print("Invalid amount to remove!")
+            elif quantity >= cart[product]['quantity']:
+                products[product]['stock'] += cart[product]['quantity']
+                del cart[product]
+                print(f"All {product}(s) removed from cart.")
+            else:
+                cart[product]['quantity'] -= quantity
+                products[product]['stock'] += quantity
+                print(f"Removed {quantity} {product}(s) from cart.")
+        except ValueError:
+            print("Please enter a valid number for the quantity.")
     else:
         print("Product not in cart!")
 
@@ -169,3 +180,5 @@ products = {
 
 cart = {}
 
+if __name__ == "__main__":
+    main()
